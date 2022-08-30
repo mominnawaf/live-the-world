@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-
+import { CircularProgress } from "@mui/material";
 import Swiper from "./Swipper";
 import styles from "./Activity.module.css";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { selectUser } from "../User/userSlice";
 import { selectActivity, getActivityBySlug } from "./activitySlice";
+import MapBox from "./MapBox";
 
 function Activity() {
   const { slugActivity } = useParams<{ slugActivity: string }>();
@@ -42,8 +43,9 @@ function Activity() {
                 {activity.description_long ? activity.description_long : ""}
               </ReactMarkdown>
             </div>
+            <MapBox longitude={activity.latitude} latitude={activity.latitude}/>
           </>
-        ) : null}
+        ) : <CircularProgress size={50} />}
       </div>
     </>
   );
