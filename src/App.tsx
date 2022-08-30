@@ -4,12 +4,14 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  
 } from "react-router-dom";
 import Activity from './features/Activity/Activity';
 import './App.css'
 
 function App() {
+ 
   return (
     <div className="App">
       <TopBar />

@@ -13,6 +13,7 @@ import {
   selectNearBYActivities
 } from "./activitySlice";
 import MapBox from "./MapBox";
+import NearbyActivities from "./NearbyActivities";
 
 function Activity() {
   const { slugActivity } = useParams<{ slugActivity: string }>();
@@ -56,6 +57,7 @@ function Activity() {
               longitude={activity.latitude}
               latitude={activity.latitude}
             />
+            <NearbyActivities near={nearByActivities} />
           </>
         ) : (
           <CircularProgress size={50} />

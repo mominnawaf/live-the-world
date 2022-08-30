@@ -12,7 +12,7 @@ function MapBox({
       initialViewState={{
         longitude: longitude,
         latitude: latitude,
-        zoom: 15,
+        zoom: 10,
       }}
       mapboxAccessToken={process.env.REACT_APP_MAP_KEY}
       style={{borderRadius:15, height: 500 }}
