@@ -1,0 +1,95 @@
+.activityContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.tipsCardTitle{
+    margin-bottom: 15px;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgb(252, 107, 67);
+    text-align: left;
+}
+
+.activityTitle {
+  margin-top: 20px;
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: rgb(102, 159, 178);
+  line-height: 0.9;
+  text-align: left;
+}
+.reactMarkDownShort p {
+  color: #669fb2;
+  text-align: left;
+}
+.labelContainer {
+  display: flex;
+  margin-top: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.label {
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(194, 217, 224);
+  border-radius: 34px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: rgb(25, 47, 84);
+  padding: 5px 10px;
+  margin: 0px 5px 5px 0px;
+}
+.reactMarkDownLong {
+  line-height: 25px;
+  text-align: justify;
+}
+.reactMarkDownLong p {
+  color: #192f54;
+}
+.reactMarkDownLong strong {
+  color: #669fb2;
+}
+.reactMarkDownLong ul {
+  padding-left: 17px;
+}
+.topSwiper{
+    margin-top: 60px;
+}
+.swiperSlide {
+  text-align: center;
+  font-size: 18px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto !important;
+  height: 400px;
+  cursor: grab;
+}
+.swiperSlide img {
+  display: block;
+  height: 400px !important;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.bottom-swiper-slide{
+  display: flex;
+  flex-direction: column;
+}
+.swiper-image {
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+}
+.swiper-element{
+  max-width: 600px;
+}
+@media (min-width: 1025px){
+.activityLeft {
+    padding-right: 100px;
+}
+}

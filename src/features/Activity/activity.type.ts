@@ -1,5 +1,5 @@
 export interface ActivityState {
-    activity: Activity | {}
+    activity: Activity
 }
 export interface Activity {
     id: number

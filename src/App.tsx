@@ -7,6 +7,7 @@ import {
   Navigate
 } from "react-router-dom";
 import Activity from './features/Activity/Activity';
+import './App.css'
 
 function App() {
   return (
