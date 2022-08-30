@@ -1,4 +1,5 @@
 import TopBar from './features/TopBar/TopBar';
+import User from './features/User/User';
 import {
   BrowserRouter,
   Routes,
@@ -11,10 +12,10 @@ function App() {
   return (
     <div className="App">
       <TopBar />
+      <User />
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<App />} /> */}
-          <Route path="/"  element={<Navigate to="/Activity/1" />}/>
+          <Route path="/"  element={<Navigate to="/Activity/castle-of-gerald-the-devil" />}/> {/*Default Activity castle-of-gerald-the-devil*/}
           <Route path="/Activity/:slugActivity" element={<Activity />} />
           <Route path='*' element={<p>Not Found</p>} />
         </Routes>

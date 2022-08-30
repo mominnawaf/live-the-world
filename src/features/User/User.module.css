@@ -1,0 +1,38 @@
+.authInput {
+    margin: 12px !important;
+    width: 300px;
+    border-radius: 5px !important;
+  }
+  .dialogTitle {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 32px !important;
+    font-weight: 800 !important;
+    color: rgb(25, 47, 84) !important;
+    text-align: center;
+  }
+  .dialogTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+  }
+  .dialogSpan {
+    font-size: 15px;
+    line-height: 20px;
+    color: rgb(117, 130, 152);
+    margin-top: 10px;
+  }
+  .loginBtn {
+    border-radius: 5px !important;
+    width: 150px !important;
+    height: 40px !important;
+    background: rgb(252, 107, 67) !important;
+  }
+  .errorSpan{
+    font-size: small;
+    color: red;
+    padding: 10px;
+  }
+  
