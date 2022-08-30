@@ -1,0 +1,34 @@
+.toolBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+  }
+  .toolBarLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .toolBarLeft > * {
+    margin: 10px;
+  }
+  .toolBarRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .toolBarRight > * {
+    margin: 10px;
+  }
+  .logoImg {
+    width: 40px;
+    height: 40px;
+  }
+  .logoDiv {
+    cursor: pointer;
+  }
+  

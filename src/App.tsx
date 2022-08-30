@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.css';
+import TopBar from './features/TopBar/TopBar';
 
 function App() {
   return (
     <div className="App">
+      <TopBar />
     </div>
   );
 }
