@@ -8,7 +8,7 @@ import  styles from'./TopBar.module.css'
 
 function TopBar() {
   return (
-    <AppBar title="TopBar" position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'white', boxShadow: `0px 0px 15px rgba(2, 27, 121, 0.2)` }}>
+    <AppBar title="TopBar" component="nav" position="sticky" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'white', boxShadow: `0px 0px 15px rgba(2, 27, 121, 0.2)` }}>
     <Toolbar variant='dense'>
       <div className={styles.toolBar}>
         <div className={styles.toolBarLeft}>
