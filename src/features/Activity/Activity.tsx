@@ -6,7 +6,12 @@ import Swiper from "./Swipper";
 import styles from "./Activity.module.css";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { selectUser } from "../User/userSlice";
-import { selectActivity, getActivityBySlug } from "./activitySlice";
+import {
+  selectActivity,
+  getActivityBySlug,
+  getNearByActivities,
+  selectNearBYActivities
+} from "./activitySlice";
 import MapBox from "./MapBox";
 
 function Activity() {
@@ -14,14 +19,18 @@ function Activity() {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const activity = useAppSelector(selectActivity);
+  const nearByActivities = useAppSelector(selectNearBYActivities)
   useEffect(() => {
     dispatch(getActivityBySlug(slugActivity!.toString()));
-  }, [user, dispatch, slugActivity]);
+  }, [user, slugActivity, dispatch]);
+  useEffect(() => {
+    if (activity.id) { // check if id is undefined
+      dispatch(getNearByActivities(activity.id));
+    }
+  }, [activity, dispatch]);
   return (
     <>
-      {activity.images ? (
-        <Swiper images={activity.images} />
-      ) : null}
+      {activity.images ? <Swiper images={activity.images} /> : null}
       <div style={{ padding: "25px 100px 0px" }}>
         {activity.images ? (
           <>
@@ -43,9 +52,14 @@ function Activity() {
                 {activity.description_long ? activity.description_long : ""}
               </ReactMarkdown>
             </div>
-            <MapBox longitude={activity.latitude} latitude={activity.latitude}/>
+            <MapBox
+              longitude={activity.latitude}
+              latitude={activity.latitude}
+            />
           </>
-        ) : <CircularProgress size={50} />}
+        ) : (
+          <CircularProgress size={50} />
+        )}
       </div>
     </>
   );
