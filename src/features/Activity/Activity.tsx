@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import { CircularProgress } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import Swiper from "./Swipper";
 import styles from "./Activity.module.css";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { selectUser } from "../User/userSlice";
+import { selectUser, addFav, removeFav, selectFavTrips } from "../User/userSlice";
 import {
   selectActivity,
   getActivityBySlug,
@@ -13,6 +13,7 @@ import {
   selectNearBYActivities
 } from "./activitySlice";
 import MapBox from "./MapBox";
+import {isFav} from './isFav'
 import NearbyActivities from "./NearbyActivities";
 
 function Activity() {
@@ -21,6 +22,7 @@ function Activity() {
   const dispatch = useAppDispatch();
   const activity = useAppSelector(selectActivity);
   const nearByActivities = useAppSelector(selectNearBYActivities)
+  const trips = useAppSelector(selectFavTrips)
   useEffect(() => {
     dispatch(getActivityBySlug(slugActivity!.toString()));
   }, [user, slugActivity, dispatch]);
@@ -29,8 +31,20 @@ function Activity() {
       dispatch(getNearByActivities(activity.id));
     }
   }, [activity, dispatch]);
+
+  const addActivityToFav = ()=>{
+    dispatch(addFav(activity.id))
+  }
+  const removeActivityToFav = ()=>{
+    dispatch(removeFav(activity.id))
+  }
+
   return (
     <>
+    {isFav(activity.id, trips) ?
+    <Button className={styles.saveBtnTop} onClick={()=>removeActivityToFav()} >Saved</Button> : 
+    <Button className={styles.saveBtnTop} onClick={()=>addActivityToFav()} >Save</Button>}
+    
       {activity.images ? <Swiper images={activity.images} /> : null}
       <div style={{ padding: "25px 100px 0px" }}>
         {activity.images ? (
@@ -57,7 +71,7 @@ function Activity() {
               longitude={activity.latitude}
               latitude={activity.latitude}
             />
-            <NearbyActivities near={nearByActivities} />
+            <NearbyActivities near={nearByActivities} trips={trips} />
           </>
         ) : (
           <CircularProgress size={50} />
