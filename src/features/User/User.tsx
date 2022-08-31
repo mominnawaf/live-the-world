@@ -64,7 +64,11 @@ export default function User() {
           </DialogTitle>
         <DialogContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div className={styles.dialogTop}>
-            <img src={Logo} alt='logo' style={{ width: 100 }} />
+            <img 
+            loading='lazy' // another way to lazy load
+            src={Logo} 
+            alt='logo' 
+            style={{ width: 100 }} />
             <span className={styles.dialogSpan}>
               Happy planning. <br/>
               Happy travel.</span>
