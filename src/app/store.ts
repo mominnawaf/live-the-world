@@ -13,6 +13,8 @@ import {
   Persistor,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { createStateSyncMiddleware, initMessageListener } from 'redux-state-sync';
+
 
 const persistConfig = {
   key: 'root',
@@ -20,6 +22,7 @@ const persistConfig = {
   storage,
 }
 
+const middleware = [createStateSyncMiddleware()];
 
 const persistedReducer = persistReducer(persistConfig, combineReducers({userStore : UserReducer,
   activityStore: ActivityReducer}))
@@ -37,9 +40,11 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(middleware),
 });
 export const persistor : Persistor = persistStore(store)
+
+initMessageListener(store)
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
