@@ -21,7 +21,7 @@ function NearbyActivities({ near }: { near: NearByActivitiesType }) {
     return (
         <div>
             <span className={styles.nearByActivityTitle}>Recommended Activities Nearby</span>
-            {near ? (
+            {near.length ? (
                 <Swiper
                     slidesPerView={4}
                     spaceBetween={50}
