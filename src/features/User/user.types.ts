@@ -10,8 +10,8 @@ export interface UserState {
     trips: {}
 }
 export interface RootUser {
-    jwt?: string
-    user?: User
+    jwt: string
+    user: User
 }
 
 export interface User {

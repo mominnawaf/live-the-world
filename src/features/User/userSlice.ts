@@ -2,11 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import { RootState } from '../../app/store';
-import { UserState, CredentialType} from "./user.types";
+import { UserState, CredentialType, RootUser} from "./user.types";
 
 
 const initialState: UserState = {
-  user: {},
+  user: {} as RootUser,
   loginStatus: "idle",
   loginError: '',
   trips : {}
