@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { ActivityState, Activity, NearByActivitiesType } from './activity.type'
 import { RootState } from '../../app/store';
+import { toast } from "react-toastify";
 
 
 const initialState: ActivityState = {
@@ -17,8 +18,14 @@ const activitySlice = createSlice({
         builder.addCase(getActivityBySlug.fulfilled, (state, action) => {
             state.activity = action.payload
         })
-        builder.addCase(getNearByActivities.fulfilled, (state, action) => {
+        .addCase(getActivityBySlug.rejected,()=>{
+            toast.error('Something went wrong')
+        })
+        .addCase(getNearByActivities.fulfilled, (state, action) => {
             state.nearByActivities = action.payload
+        })
+        .addCase(getNearByActivities.rejected, ()=>{
+            toast.error('something went wrong')
         })
     }
 })

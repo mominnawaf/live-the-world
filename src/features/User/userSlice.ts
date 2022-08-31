@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import { toast } from 'react-toastify'
 import { RootState } from '../../app/store';
 import { UserState, CredentialType, RootUser, TripActivityType } from "./user.types";
 
@@ -25,19 +25,30 @@ const userSlice = createSlice({
         state.loginStatus = "success";
         localStorage.setItem('jwt', action.payload.jwt) //session storage can also be used, but user will have to reauthenticate.
         state.user = action.payload;
+        toast.success('Authentication Success !')
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loginError = action.error.message! + '. Please try again.'
+        toast.error('Something went wrong.')
         state.loginStatus = "rejected";
       })
       .addCase(getUserTrips.fulfilled, (state, action) => {
         state.trips = action.payload[0].activities
       })
+      .addCase(getUserTrips.rejected, () => {
+        toast.error(`Ops! Couldn't fetch Trips.`)
+      })
       .addCase(addFav.fulfilled, () => {
-        console.log('Fav Added')
+        toast.success('Favorite Added')
+      })
+      .addCase(addFav.rejected, () => {
+        toast.error('Something went wrong.')
       })
       .addCase(removeFav.fulfilled, () => {
-        console.log('Fav Removed')
+        toast.success('Favorite Removed')
+      })
+      .addCase(removeFav.rejected, () => {
+        toast.error('Something went wrong.')
       })
   },
 });
