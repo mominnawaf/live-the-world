@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import {toast} from 'react-toastify'
 import { ActivityState, Activity, NearByActivitiesType } from './activity.type'
 import { RootState } from '../../app/store';
 
@@ -20,6 +20,13 @@ const activitySlice = createSlice({
         builder.addCase(getNearByActivities.fulfilled, (state, action) => {
             state.nearByActivities = action.payload
         })
+        .addCase(getActivityBySlug.rejected,()=>{
+            toast.error('Something went wrong')
+        })
+        .addCase(getNearByActivities.rejected, ()=>{
+            toast.error('something went wrong')
+        })
+        
     }
 })
 export const getActivityBySlug = createAsyncThunk(
