@@ -72,7 +72,7 @@ export const addFav = createAsyncThunk(
   'user/trips/add-fav', async (activityId: number, { getState, dispatch }) => {
     const url: string = `${process.env.REACT_APP_BASE_URL}/frontend/trips/add_activity`
     const state: any = getState();
-    const tripId = state.userStore.trips[0].id || 1
+    const tripId = state.persistedReducer.userStore.trips[0].id || 1
     await axios.put(url, {
       activityId: activityId,
       tripId: tripId,
@@ -91,7 +91,7 @@ export const removeFav = createAsyncThunk(
   'user/trips/remove-fav', async (activityId: number, { getState, dispatch }) => {
     const url: string = `${process.env.REACT_APP_BASE_URL}/frontend/trips/remove_activity`
     const state: any = getState();
-    const tripId = state.userStore.trips[0].id || 1
+    const tripId = state.persistedReducer.userStore.trips[0].id || 1
     await axios.put(url, {
       activityId: activityId,
       tripId: tripId,
@@ -107,7 +107,7 @@ export const removeFav = createAsyncThunk(
   }
 )
 
-export const selectUser = ((state: RootState) => state.userStore.user)
-export const selectLoginError = ((state: RootState) => state.userStore.loginError)
-export const selectFavTrips = ((state: RootState) => state.userStore.trips)
+export const selectUser = ((state: RootState) => state.persistedReducer.userStore.user)
+export const selectLoginError = ((state: RootState) => state.persistedReducer.userStore.loginError)
+export const selectFavTrips = ((state: RootState) => state.persistedReducer.userStore.trips)
 export default userSlice.reducer;
