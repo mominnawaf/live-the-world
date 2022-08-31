@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import { RootState } from '../../app/store';
-import { UserState, CredentialType, RootUser} from "./user.types";
+import { UserState, CredentialType, RootUser, TripActivityType} from "./user.types";
 
 
 const initialState: UserState = {
   user: {} as RootUser,
   loginStatus: "idle",
   loginError: '',
-  trips : {}
+  trips : {} as TripActivityType
 };
 
 const userSlice = createSlice({
@@ -65,4 +65,5 @@ export const getUserTrips = createAsyncThunk(
 
 export const selectUser = ((state : RootState) => state.userStore.user)
 export const selectLoginError=((state: RootState)=> state.userStore.loginError)
+export const selectFavTrips =((state: RootState)=>state.userStore.trips[0].activities)
 export default userSlice.reducer;

@@ -7,7 +7,7 @@ export interface UserState {
     user: RootUser,
     loginStatus: 'idle' | 'pending' | 'success' | 'rejected',
     loginError: string,
-    trips: {}
+    trips: TripActivityType
 }
 export interface RootUser {
     jwt: string
@@ -129,4 +129,20 @@ export interface NewsletterSubscription {
     LASTNAME: string
     FIRSTNAME: string
     SOURCE: string
+}
+
+export type TripActivityType = TripActivity[]
+
+export interface TripActivity {
+  id?: number
+  type: string
+  title: string
+  activities: Activity[]
+  routes?: any[]
+}
+
+export interface Activity {
+  id: number
+  slug: string
+  name: string
 }

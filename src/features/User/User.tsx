@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { loginUser,} from './userSlice'
-import { selectUser, selectLoginError } from './userSlice'
+import { selectUser, selectLoginError, getUserTrips } from './userSlice'
 import {
   Dialog,
   DialogTitle,
@@ -29,12 +29,13 @@ export default function User() {
   useEffect(() => {
     if (user.jwt) {
       setOpen(false)
+      dispatch(getUserTrips())
     }
     else {
       setOpen(true)
     }
 
-  }, [user])
+  }, [user, dispatch])
 
   const submit = () => {
     if (!email.length) {
