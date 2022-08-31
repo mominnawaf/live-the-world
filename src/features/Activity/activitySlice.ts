@@ -40,6 +40,6 @@ export const getNearByActivities = createAsyncThunk(
         return nearby.data
     },
 );
-export const selectActivity = ((state: RootState) => state.activityStore.activity)
-export const selectNearBYActivities =((state :RootState)=> state.activityStore.nearByActivities)
+export const selectActivity = ((state: RootState) => state.persistedReducer.activityStore.activity)
+export const selectNearBYActivities =((state :RootState)=> state.persistedReducer.activityStore.nearByActivities)
 export default activitySlice.reducer
